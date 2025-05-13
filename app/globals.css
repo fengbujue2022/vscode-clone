@@ -1,0 +1,326 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+}
+
+/* 添加可调整大小的边框样式 */
+.resizable {
+  position: relative;
+}
+
+.resize-handle {
+  position: absolute;
+  background-color: transparent;
+  z-index: 100;
+}
+
+.resize-handle-right {
+  width: 5px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  cursor: e-resize;
+}
+
+.resize-handle-bottom {
+  width: 100%;
+  height: 5px;
+  bottom: 0;
+  left: 0;
+  cursor: s-resize;
+}
+
+.resize-handle-corner {
+  width: 10px;
+  height: 10px;
+  right: 0;
+  bottom: 0;
+  cursor: se-resize;
+}
+
+/* 调整大小面板样式 */
+.resizable-panel {
+  overflow: hidden;
+}
+
+.resizable-panel .resize-handle:hover {
+  background-color: rgba(0, 122, 204, 0.2);
+}
+
+.resizable-panel .resize-handle:active {
+  background-color: rgba(0, 122, 204, 0.4);
+}
+
+/* Add terminal-specific styles */
+.terminal-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Terminal tabs styling */
+.terminal-tab {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  height: 28px;
+  border-right: 1px solid #3c3c3c;
+  cursor: pointer;
+  user-select: none;
+}
+
+.terminal-tab.active {
+  background-color: #1e1e1e;
+}
+
+.terminal-tab:not(.active) {
+  background-color: #2d2d2d;
+}
+
+.terminal-tab:not(.active):hover {
+  background-color: #2a2a2a;
+}
+
+/* Terminal header styling */
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #252526;
+  border-bottom: 1px solid #3c3c3c;
+  height: 35px;
+}
+
+/* Terminal content styling */
+.terminal-content {
+  background-color: #1e1e1e;
+  color: #cccccc;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 8px;
+  overflow: auto;
+}
+
+/* Terminal prompt styling */
+.terminal-prompt {
+  color: #0f0;
+  margin-right: 4px;
+}
+
+/* Terminal command styling */
+.terminal-command {
+  color: #fff;
+}
+
+/* Terminal output styling */
+.terminal-output {
+  color: #cccccc;
+  white-space: pre-wrap;
+}
+
+/* Terminal error styling */
+.terminal-error {
+  color: #f44;
+  white-space: pre-wrap;
+}
+
+/* Monaco Editor container */
+.monaco-editor-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Ensure the editor has proper dimensions */
+.monaco-editor {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Override Monaco Editor bracket pair colorization styles */
+.monaco-editor .bracket-match,
+.monaco-editor .bracket-highlighting-0,
+.monaco-editor .bracket-highlighting-1,
+.monaco-editor .bracket-highlighting-2,
+.monaco-editor .bracket-highlighting-3,
+.monaco-editor .bracket-highlighting-4,
+.monaco-editor .bracket-highlighting-5,
+.monaco-editor .bracket-highlighting-6 {
+  color: inherit !important;
+  background-color: transparent !important;
+  border: none !important;
+  text-decoration: none !important;
+}
+
+/* Remove bracket pair guides */
+.monaco-editor .bracket-pair-guide-background,
+.monaco-editor .horizontal-bracket-pair-guide,
+.monaco-editor .vertical-bracket-pair-guide {
+  display: none !important;
+  opacity: 0 !important;
+  border: none !important;
+  background: none !important;
+}
+
+/* Hide any other bracket-related decorations */
+.monaco-editor .line-numbers[style*="color"] {
+  color: inherit !important;
+}
+
+/* Ensure no unexpected line segments appear */
+.monaco-editor .view-overlays .current-line,
+.monaco-editor .margin-view-overlays .current-line-margin {
+  border-color: rgba(100, 100, 100, 0.3) !important;
+}
+
+/* Tab bar styling */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tab styling */
+.tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 35px;
+  border-right: 1px solid #3c3c3c;
+  transition: background-color 0.2s ease;
+}
+
+.tab.active {
+  background-color: #1e1e1e;
+}
+
+.tab:not(.active) {
+  background-color: #2d2d2d;
+}
+
+.tab:not(.active):hover {
+  background-color: #2a2a2a;
+}
+
+.tab-modified-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.tab-temporary {
+  font-style: italic;
+}
+
+.tab-close-button {
+  opacity: 1;
+}
+
+.tab-language-label {
+  display: none;
+}
+
+/* Add these styles at the end of the file */
+
+/* Context menu styling */
+.context-menu {
+  background-color: #252526;
+  border: 1px solid #3c3c3c;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  min-width: 240px;
+}
+
+.context-menu-item {
+  padding: 6px 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.context-menu-item:hover {
+  background-color: #094771;
+}
+
+.context-menu-separator {
+  height: 1px;
+  background-color: #3c3c3c;
+  margin: 4px 0;
+}
+
+.context-menu-shortcut {
+  color: #8c8c8c;
+  font-size: 0.8rem;
+  margin-left: 16px;
+}
+
+.context-menu-submenu {
+  position: relative;
+}
+
+.context-menu-submenu-icon {
+  margin-left: 8px;
+}
+
+/* Tab bar specific styles */
+.tab-container {
+  display: flex;
+  overflow-x: auto;
+  flex: 1;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scroll-behavior: smooth; /* Add smooth scrolling */
+}
+
+.tab-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+.tab-scroll-button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #252526;
+  cursor: pointer;
+}
+
+.tab-scroll-button:hover {
+  background-color: #2a2a2a;
+}
+
+.tab-scroll-button-left {
+  left: 0;
+}
+
+.tab-scroll-button-right {
+  right: 0;
+}
